@@ -13,11 +13,13 @@
     <title>Wx Dashboard</title>
 </head>
 <body>
-      <h1 class="text-center">Wx Dashboard</h1>
+
 
       <!-- Left column button links below -->
       <div class="container">
         <div class="row">
+          <h1 class="text-center">Wx Dashboard</h1>
+          <!-- Try to work with columns to make the DOM look better -->
           <h3>Search for a city</h3>
           <form action="" method="post">
               <input type="text" name="city" id="city" placeholder="Enter a city name">
@@ -32,7 +34,7 @@
           </div>
           <div class="col-md-8">
             <!-- Large box containing current wx data -->
-            <div class="card-group">
+            <div class="card-group" id="eliminateGap">
               <div class="card">
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item"><h3>Name of city and current date</h3></li>
@@ -46,7 +48,7 @@
                 <p class="text-center">Make the current wx img appear here</p>
               </div>
             </div>
-            <h3>5-Day Forecast</h3>
+            <h3 class="mt-3">5-Day Forecast</h3>
             <!-- Start of the Wx Cards -->
             <div class="card-group">
               <div class="card">
