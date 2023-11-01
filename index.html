@@ -9,31 +9,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdyA30jLMYz0Tebb7rOgra6Qr3X_1QVgg&libraries=places&callback=initMap" async defer></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdyA30jLMYz0Tebb7rOgra6Qr3X_1QVgg&libraries=places&callback=initMap,initAutocomplete" async defer></script>
-    <title>Document</title>
+    <title>Wx Dashboard</title>
 </head>
 <body>
-    <!-- Put code here for the navbar -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="./index.html">Home</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="true" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link-active" aria-current="page" href="./index.html">Home</a>
-                    </li>
-                    <li>
-                        <a href="./favorites.html">Favorites</a>
-                    </li>
-                </ul>
-
-            </div>
+          <a class="navbar-brand" href="./index.html">Wx Dashboard</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="./favorites.html">Favorites</a>
+              </li>
+            </ul>
+          </div>
         </div>
-    </nav>
+      </nav>
 
     <h1>Search for a city</h1>
     <form action="" method="post">
