@@ -1,6 +1,8 @@
 // // BEGIN AUTOCOMPLETE
 document.addEventListener('DOMContentLoaded', function () {
-    initAutoComplete();
+    setTimeout(function () {
+        initAutoComplete();
+    }, 500);
 });
 
 
@@ -19,7 +21,6 @@ function initAutoComplete() {
 
 
 // //  MIGHT BE ABLE TO USE THE CODE BELOW FOR THE WEATHER IMAGE IN THE CARDS
-
 
 // const myAPIKey = '442fc2578f087c163d126cb7d628bf5d';
 // const city = "Minneapolis, MN";
