@@ -6,3 +6,8 @@ function initAutoComplete() {
         var place = autocomplete.getPlace();
     });
 };
+
+document.addEventListener('DOMContentLoaded', function () {
+    initAutoComplete();
+});
+
