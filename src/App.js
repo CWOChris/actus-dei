@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Header } from './components/Header';
 import { WelcomeMessage } from './components/WelcomeMessage';
-import { WeatherSearch } from './components/WeatherSearch';
-import { WeatherDisplay } from './components/WeatherDisplay';
+import WeatherSearch from './components/WeatherSearch';
+import WeatherDisplay from './components/WeatherDisplay';
 
 function App() {
   const [wxData, setWxData] = useState(null);

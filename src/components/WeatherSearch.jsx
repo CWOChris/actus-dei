@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { fetchWeatherData } from '../services/WeatherService';
+import fetchWxData from '../services/WxService';
 
 function WeatherSearch({ onSearch }) {
   const [location, setLocation] = useState('');
 
   const handleSearch = async () => {
     try {
-      const data = await fetchWeatherData(location);
+      const data = await fetchWxData(location);
       onSearch(data);
     } catch (error) {
       console.error('Search failed:', error);
@@ -27,4 +27,4 @@ function WeatherSearch({ onSearch }) {
   );
 }
 
-export { WeatherSearch };
+export default WeatherSearch;
