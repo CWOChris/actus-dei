@@ -1,67 +1,50 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import axios from 'axios';
-import { Box, Card, CardContent, Typography, Grid } from '@mui/material';
+import { Box, Typography, Grid, Switch, FormControlLabel, FormGroup } from '@mui/material';
+import ForecastCard from './ForecastCard'; // Make sure you have this component
 
 const ForecastPage = () => {
   const [weatherData, setWeatherData] = useState(null);
-  const { searchTerm } = useLocation().state; // Assuming you're passing the search term via route state
+  const [isMetric, setIsMetric] = useState(true); // State to track if metric is selected
+  const { searchTerm } = useLocation().state; // Adjust according to how you pass the searchTerm
 
   useEffect(() => {
     const apiKey = '442fc2578f087c163d126cb7d628bf5d';
+    // Adjust the units parameter based on the isMetric state
+    const units = isMetric ? 'metric' : 'imperial';
     const baseUrl = 'https://api.openweathermap.org/data/2.5/forecast';
-    const url = `${baseUrl}?q=${searchTerm}&units=metric&appid=${apiKey}`;
+    const url = `${baseUrl}?q=${searchTerm}&units=${units}&appid=${apiKey}`;
 
     axios.get(url)
       .then(response => {
         setWeatherData(response.data);
       })
       .catch(error => console.error('There was an error fetching the forecast data:', error));
-  }, [searchTerm]);
+  }, [searchTerm, isMetric]); // Add isMetric to the dependency array to refetch when it changes
 
-  const renderWeatherCards = () => {
-    if (!weatherData) return null;
-
-    // Assuming the API returns a list where each item represents a 3-hour forecast,
-    // and you're only interested in the forecast at the same time each day for simplicity.
-    const dailyForecasts = weatherData.list.filter((_, index) => index % 8 === 0);
-
-    return dailyForecasts.map((forecast, index) => (
-      <Grid item xs={12} sm={6} md={4} key={index}>
-        <Card sx={{ maxWidth: 345 }}>
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              {new Date(forecast.dt * 1000).toLocaleDateString()}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {forecast.weather[0].main}
-              {/* Add image/icon based on weather condition */}
-            </Typography>
-            <Typography variant="body1">
-              Min: {Math.round(forecast.main.temp_min)}°C
-              <span style={{ opacity: 0.6, fontSize: '0.8rem' }}>
-                ({Math.round(forecast.main.temp_min * 9/5 + 32)}°F)
-              </span>
-            </Typography>
-            <Typography variant="body1">
-              Max: {Math.round(forecast.main.temp_max)}°C
-              <span style={{ opacity: 0.6, fontSize: '0.8rem' }}>
-                ({Math.round(forecast.main.temp_max * 9/5 + 32)}°F)
-              </span>
-            </Typography>
-          </CardContent>
-        </Card>
-      </Grid>
-    ));
+  const handleToggle = (event) => {
+    setIsMetric(event.target.checked);
   };
+
+  // Function to render weather cards goes here (make sure it uses isMetric to adjust displayed units)
 
   return (
     <Box sx={{ flexGrow: 1, padding: 2 }}>
-      <Typography variant="h4" gutterBottom>
-        5-Day Forecast
-      </Typography>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <Typography variant="h4" gutterBottom>
+          5-Day Forecast
+        </Typography>
+        <FormGroup>
+          <FormControlLabel
+            control={<Switch checked={isMetric} onChange={handleToggle} />}
+            label={isMetric ? 'C' : 'F'}
+            labelPlacement="start"
+          />
+        </FormGroup>
+      </Box>
       <Grid container spacing={2}>
-        {renderWeatherCards()}
+        {/* Render your weather cards here */}
       </Grid>
     </Box>
   );
