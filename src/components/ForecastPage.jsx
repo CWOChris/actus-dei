@@ -8,7 +8,7 @@ const ForecastPage = () => {
   const { searchTerm } = useLocation().state; // Assuming you're passing the search term via route state
 
   useEffect(() => {
-    const apiKey = 'YOUR_API_KEY_HERE';
+    const apiKey = '442fc2578f087c163d126cb7d628bf5d';
     const baseUrl = 'https://api.openweathermap.org/data/2.5/forecast';
     const url = `${baseUrl}?q=${searchTerm}&units=metric&appid=${apiKey}`;
 
