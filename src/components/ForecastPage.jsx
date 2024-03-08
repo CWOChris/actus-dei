@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
-import { Box, Card, CardContent, Typography, Grid, Switch, FormControlLabel, Stack } from '@mui/material';
+import { Box, Card, CardContent, Typography, Grid, Switch, FormControlLabel, Stack, CardMedia } from '@mui/material';
 
 const ForecastPage = () => {
   const [weatherData, setWeatherData] = useState(null);
@@ -37,8 +37,15 @@ const ForecastPage = () => {
             <Typography gutterBottom variant="h5" component="div">
               {new Date(forecast.dt * 1000).toLocaleDateString()}
             </Typography>
+            {/* Display the weather icon */}
+            <CardMedia
+              component="img"
+              image={`https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`}
+              alt="Weather icon"
+              style={{ width: "50px", height: "50px" }}
+            />
             <Typography variant="body2" color="text.secondary">
-              {forecast.weather[0].main}
+              {forecast.weather[0].description}
             </Typography>
             <Typography variant="body1">
               Min: {Math.round(forecast.main.temp_min)}{isMetric ? '°C' : '°F'}
@@ -70,7 +77,6 @@ const ForecastPage = () => {
           <Typography variant="body2" sx={{ opacity: isMetric ? 1 : 0.5 }}>C</Typography>
         </Stack>
       </Box>
-      {/* New Section for City/Country and Today's Forecast Description */}
       {weatherData && (
         <>
           <Typography variant="subtitle1" gutterBottom>
