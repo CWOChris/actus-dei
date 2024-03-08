@@ -42,7 +42,7 @@ const ForecastPage = () => {
               component="img"
               image={`https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`}
               alt="Weather icon"
-              style={{ width: "50px", height: "50px" }}
+              style={{ width: "100px", height: "100px" }}
             />
             <Typography variant="body2" color="text.secondary">
               {forecast.weather[0].description}
@@ -57,6 +57,12 @@ const ForecastPage = () => {
               Max: {Math.round(forecast.main.temp_max)}{isMetric ? '°C' : '°F'}
               <span style={{ opacity: isMetric ? 0.6 : 1, fontSize: '0.8rem' }}>
                 ({Math.round(isMetric ? forecast.main.temp_max * 9/5 + 32 : (forecast.main.temp_max - 32) * 5/9)}{isMetric ? '°F' : '°C'})
+              </span>
+            </Typography>
+            <Typography variant="body1">
+              Humidity: {forecast.main.humidity}%
+              <span style={{ opacity: isMetric ? 0.6 : 1, fontSize: '0.8rem' }}>
+                ({Math.round(forecast.main.humidity * 100) / 100}%)
               </span>
             </Typography>
           </CardContent>
